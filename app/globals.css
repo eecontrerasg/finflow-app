@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+
+/* =========================
+   FinFlow Design Tokens
+   ========================= */
+@theme {
+  /* Brand */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+
+  --color-success: #22c55e;
+  --color-success-hover: #16a34a;
+
+  --color-premium: #8b5cf6;
+
+  /* Status */
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+
+  /* Neutrals */
+  --color-black: #0f172a;
+  --color-gray-900: #1e293b;
+  --color-gray-600: #475569;
+  --color-gray-400: #94a3b8;
+  --color-gray-200: #e2e8f0;
+  --color-gray-50: #f8fafc;
+
+  /* Surfaces */
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-highlight-blue: #eff6ff;
+  --color-highlight-green: #f0fdf4;
+}
+
+/* Base styles */
+body {
+  background-color: theme(--color-background);
+  color: theme(--color-gray-900);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system;
+}
+
+.material-icon {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
