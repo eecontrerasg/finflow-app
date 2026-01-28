@@ -65,9 +65,8 @@ export default function Sidebar() {
         bg-surface
         bg-gray-900
         transition-all duration-300
-        rounded-xl
-        border-gray-600
-        m-5
+        rounded-xl border border-gray-200
+        m-4
         ${collapsed ? 'w-20' : 'w-72'}
       `}
     >
