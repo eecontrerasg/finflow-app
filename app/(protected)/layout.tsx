@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import { useUser } from '@/lib/context/UserContext'
+import Topbar from '@/components/layouts/Topbar'
+import Sidebar from '@/components/layouts/Sidebar'
 
 export default function ProtectedLayout({
   children
@@ -10,13 +10,6 @@ export default function ProtectedLayout({
   children: React.ReactNode
 }) {
   const { user, loading } = useUser()
-  const router = useRouter()
-
-  useEffect(() => {
-    if (!loading && !user) {
-      router.replace('/login')
-    }
-  }, [loading, user, router])
 
   if (loading || !user) {
     return (
@@ -26,5 +19,14 @@ export default function ProtectedLayout({
     )
   }
 
-  return <>{children}</>
+  return (
+    <div className="flex min-h-screen bg-background">
+      <Sidebar />
+
+      <div className="flex flex-col flex-1">
+        <Topbar />
+        <main className="flex-1 p-6 mt-2">{children}</main>
+      </div>
+    </div>
+  )
 }

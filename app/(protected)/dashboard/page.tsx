@@ -27,7 +27,7 @@ export default async function DashboardLayout() {
   }
 
   return (
-    <AppShell>
+    <>
       <h1 className="text-2xl font-semibold mb-6">Dashboard</h1>
 
       <div className="grid grid-cols-3 gap-6">
@@ -35,7 +35,7 @@ export default async function DashboardLayout() {
         <Card title="Pagos pendientes" value="3" bg="bg-highlight-blue" />
         <Card title="Errores" value="1" bg="bg-red-50" />
       </div>
-    </AppShell>
+    </>
   )
 }
 

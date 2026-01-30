@@ -1,38 +1,20 @@
 'use client'
 
+import { useState } from 'react'
 import { useUser } from '@/lib/context/UserContext'
+import { UserDropdown } from '../ui/UserDropdown'
 
 export default function Topbar() {
-  const { user, loading, signOut } = useUser()
+  const { user, loading } = useUser()
+  const [open, setOpen] = useState(false)
 
   return (
-    <header className="h-14 bg-surface border-b border-gray-200 flex items-center justify-between px-6">
-      <span className="text-sm text-gray-600">Panel principal</span>
+    <header className="sticky top-4 z-40 mx-4 h-14 rounded-xl bg-white/80 backdrop-blur shadow-sm flex items-center justify-between px-6">
+      {/* Left */}
+      <span className="text-sm font-medium text-gray-700">Panel principal</span>
 
-      <div className="flex items-center gap-3">
-        {!loading && user && (
-          <>
-            <div className="text-sm text-gray-700">
-              {user.full_name ?? user.email}
-            </div>
-
-            {user.avatar_url ? (
-              <img src={user.avatar_url} className="h-8 w-8 rounded-full" />
-            ) : (
-              <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center text-xs">
-                {user.full_name?.[0] ?? 'U'}
-              </div>
-            )}
-          </>
-        )}
-      </div>
-
-      <button
-        onClick={signOut}
-        className="text-sm text-gray-600 hover:text-gray-900 cursor-pointer"
-      >
-        Cerrar sesión
-      </button>
+      {/* Right */}
+      {!loading && user && <UserDropdown />}
     </header>
   )
 }
