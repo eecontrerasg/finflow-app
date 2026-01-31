@@ -104,34 +104,34 @@ export default function Sidebar() {
         <NavItem
           label="Clientes"
           icon="group"
-          href="/clientes"
+          href="/clients"
           collapsed={collapsed}
-          active={pathname.startsWith('/clientes')}
+          active={pathname.startsWith('/clients')}
         />
 
         <NavItem
           label="Pagos"
           icon="payments"
-          href="/pagos"
+          href="/payments"
           collapsed={collapsed}
-          active={pathname.startsWith('/pagos')}
+          active={pathname.startsWith('/payments')}
         />
 
         <NavItem
           label="Reportes"
           icon="bar_chart"
-          href="/reportes"
+          href="/reports"
           premium
           collapsed={collapsed}
-          active={pathname.startsWith('/reportes')}
+          active={pathname.startsWith('/reports')}
         />
 
         <NavItem
           label="Configuración"
           icon="settings"
-          href="/configuracion"
+          href="/settings"
           collapsed={collapsed}
-          active={pathname.startsWith('/configuracion')}
+          active={pathname.startsWith('/settings')}
         />
       </nav>
 
