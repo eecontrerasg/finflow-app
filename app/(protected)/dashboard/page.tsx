@@ -1,8 +1,33 @@
 import AppShell from '@/components/layouts/AppShell'
+import { createServerClient } from '@supabase/ssr'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
-export default function DashboardPage() {
+export default async function DashboardLayout() {
+  const cookieStore = await cookies()
+
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name) {
+          return cookieStore.get(name)?.value
+        }
+      }
+    }
+  )
+
+  const {
+    data: { session }
+  } = await supabase.auth.getSession()
+
+  if (!session) {
+    redirect('/login')
+  }
+
   return (
-    <AppShell>
+    <>
       <h1 className="text-2xl font-semibold mb-6">Dashboard</h1>
 
       <div className="grid grid-cols-3 gap-6">
@@ -10,7 +35,7 @@ export default function DashboardPage() {
         <Card title="Pagos pendientes" value="3" bg="bg-highlight-blue" />
         <Card title="Errores" value="1" bg="bg-red-50" />
       </div>
-    </AppShell>
+    </>
   )
 }
 

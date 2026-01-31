@@ -1,12 +1,20 @@
-export default function Topbar() {
-  return (
-    <header className="h-14 bg-surface border-b border-gray-200 flex items-center justify-between px-6">
-      <span className="text-sm text-gray-600">Panel principal</span>
+'use client'
 
-      <div className="flex items-center gap-3">
-        <div className="text-sm text-gray-600">Dr. Juan Pérez</div>
-        <div className="h-8 w-8 rounded-full bg-gray-200" />
-      </div>
+import { useState } from 'react'
+import { useUser } from '@/lib/context/UserContext'
+import { UserDropdown } from '../ui/UserDropdown'
+
+export default function Topbar() {
+  const { user, loading } = useUser()
+  const [open, setOpen] = useState(false)
+
+  return (
+    <header className="sticky top-4 z-40 mx-4 h-14 rounded-xl bg-white/80 backdrop-blur shadow-sm flex items-center justify-between px-6">
+      {/* Left */}
+      <span className="text-sm font-medium text-gray-700">Panel principal</span>
+
+      {/* Right */}
+      {!loading && user && <UserDropdown />}
     </header>
   )
 }
